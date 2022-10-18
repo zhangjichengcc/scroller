@@ -1,5 +1,5 @@
 {
-  "name": "scroller.js",
+  "name": "scroller",
   "version": "1.0.0",
   "description": "A scrolling plug-in",
   "main": "lib/main.cjs.js",
@@ -12,6 +12,15 @@
   "keywords": [
     "scroll",
     "requestAnimationFrame"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "private": false,
+  "files": [
+    "/lib",
+    "moment.d.ts",
+    "/README.md"
   ],
   "author": "zhangjicheng",
   "license": "ISC",
