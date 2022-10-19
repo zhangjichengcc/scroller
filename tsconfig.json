@@ -10,7 +10,7 @@
     "esModuleInterop": true, // 允许export=导出，由import from 导入
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "declaration": true,
+    "declaration": true, // 自动生成 .s.ts 声明文件
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "baseUrl": "./",  
