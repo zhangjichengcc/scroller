@@ -2,12 +2,12 @@
  * @Author: zhangjicheng
  * @Date: 2022-07-11 11:42:43
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-10-18 18:18:42
+ * @LastEditTime: 2022-10-19 14:27:23
  * @FilePath: \scroller.js\rollup.config.ts
  */
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve'; // 帮助rollup查找外部模块
-import commonjs from 'rollup-plugin-commonjs'; // 将commonjs转es6模块
+import resolve from '@rollup/plugin-node-resolve'; // 帮助rollup查找外部模块
+import commonjs from '@rollup/plugin-commonjs'; // 将commonjs转es6模块
 import filesize from 'rollup-plugin-filesize'; // 显示打包后包大小
 import { terser } from 'rollup-plugin-terser';  // 压缩代码
 import { eslint } from 'rollup-plugin-eslint';
@@ -18,14 +18,15 @@ import packageJSON from './package.json';
 const { TERSER } = process.env;
 
 const plugins = [
+  babel({
+    exclude: 'node_modules/**' // 只编译我们的源代码
+  }),
   resolve({
-    browser: true,
+    mainFields: ['main', 'module', 'browser'],
+    extensions: ['.js', '.tx', '.json'],
   }),
   commonjs({
     include: ['node_modules/**']
-  }),
-  babel({
-    exclude: 'node_modules/**' // 只编译我们的源代码
   }),
   filesize(),
   TERSER ? terser() : '',

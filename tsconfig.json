@@ -10,6 +10,7 @@
     "esModuleInterop": true, // 允许export=导出，由import from 导入
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "baseUrl": "./",  
