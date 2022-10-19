@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-10-18 17:17:12
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-10-19 15:36:20
+ * @LastEditTime: 2022-10-19 17:58:33
  * @FilePath: \scroller.js\src\main.ts
  */
 import tweenFunctions from 'tween-functions';
