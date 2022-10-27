@@ -1,6 +1,6 @@
 {
-  "name": "@zhangjicheng/scroller.js",
-  "version": "1.0.0-alpha.1",
+  "name": "@zhangjc/scroller",
+  "version": "1.0.0",
   "description": "A scrolling plug-in",
   "main": "lib/main.cjs.js",
   "module": "lib/main.esm.js",
@@ -12,14 +12,15 @@
   },
   "keywords": [
     "scroll",
+    "scroller",
     "requestAnimationFrame"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhangjichengcc/js-moment"
+    "url": "https://github.com/zhangjichengcc/scroller"
   },
   "bugs": {
-    "url": "https://github.com/zhangjichengcc/js-moment/issues"
+    "url": "https://github.com/zhangjichengcc/scroller/issues"
   },
   "directories": {
     "lib": "lib"
@@ -38,7 +39,6 @@
     "@rollup/plugin-commonjs": "^23.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@types/node": "^18.11.2",
-    "@types/tween-functions": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "eslint": "^8.19.0",
@@ -49,8 +49,5 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "tween-function": "^2.0.1"
   }
 }
