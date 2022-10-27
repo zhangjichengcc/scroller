@@ -1,14 +1,19 @@
 {
-  "name": "@zhangjc/scroller",
+  "name": "@zhangjicheng/scroller",
   "version": "1.0.0",
   "description": "A scrolling plug-in",
+  "author": "zhangjicheng",
+  "license": "ISC",
   "main": "lib/main.cjs.js",
   "module": "lib/main.esm.js",
   "jsnext:main": "lib/main.esm.js",
   "typings": "lib/main.d.ts",
+  "private": false,
+  "access": "public",
   "scripts": {
     "start": "rollup -c",
-    "build": "set TERSER=1 && rollup -c"
+    "build": "set TERSER=1 && rollup -c",
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "scroll",
@@ -17,22 +22,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhangjichengcc/scroller"
+    "url": "git+https://github.com/zhangjichengcc/scroller.git"
   },
   "bugs": {
     "url": "https://github.com/zhangjichengcc/scroller/issues"
   },
+  "homepage": "https://github.com/zhangjichengcc/scroller#readme",
   "directories": {
     "lib": "lib"
   },
-  "private": false,
   "files": [
     "/lib",
-    "moment.d.ts",
     "/README.md"
   ],
-  "author": "zhangjicheng",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.18.6",
