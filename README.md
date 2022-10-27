@@ -134,7 +134,7 @@ scroller.scrollTo(500, cb);
 ## 更新日志
 
 - **v1.0.0**
-  基本的`Scroller`累, 返回`scroller`实例，进行滚动操作；
+  基本的`Scroller`类, 返回`scroller`实例，进行滚动操作；
 
 ---
 
