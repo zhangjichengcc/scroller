@@ -117,7 +117,9 @@ scroller.scrollTo(500, cb);
 
   |方法|说明|版本|
   |-|-|-|
-  |`scrollTo(y: number, cb?: (y: number) => void)`|滚动方法，传递滚动距离及回调方法，回调方法返回每次滚动的位置，非必填|v1.0.0|
+  |`scrollTo(y: number, cb?: (y: number) => void)`|自动滚动方法，固定时间内滚动到指定位置，传递滚动距离及回调方法，回调方法返回每次滚动的位置，非必填|v1.0.0|
+  |`start(speed: number, cb?: (y: number) => void)`|滚动方法，传递滚动距离及回调方法，回调方法返回每次滚动的位置，非必填|v1.1.0|
+  |`stop(speed: number, cb?: (y: number) => void)`|滚动方法，传递滚动距离及回调方法，回调方法返回每次滚动的位置，非必填|v1.1.0|
 
 - 属性
 
@@ -135,6 +137,8 @@ scroller.scrollTo(500, cb);
 
 - **v1.0.0**
   基本的`Scroller`类, 返回`scroller`实例，进行滚动操作；
+- **v1.1.0**
+  添加 `scroller.start(speed: number)`、`scroller.stop()` 方法，实现匀速滚动，手动控制开始停止，用于table自动滚动等效果
 
 ---
 

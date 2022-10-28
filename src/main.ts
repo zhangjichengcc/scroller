@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-10-18 17:17:12
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-10-27 16:46:08
+ * @LastEditTime: 2022-10-28 20:28:33
  * @FilePath: \scroller.js\src\main.ts
  */
 import tweenFunctions from '@/utils/tweenFunctions';
@@ -18,11 +18,12 @@ type Option = {
 /**
  * 滚动器
  */
-class Scroller {
+ class Scroller {
 
-  private scrollId: number | undefined;
+  private scrollId: number;
   private prevTimestamp: number;
   private scrollCb?: (y: number) => void;
+  private speed: number;
   /** 滚动起始位置 */
   public source: number;
   /** 滚动截止位置 */
@@ -40,7 +41,8 @@ class Scroller {
       easing = 'ease'
     } = option || {};
 
-    this.scrollId;
+    this.scrollId = 0;
+    this.speed = 50 / 1000;
     this.element = element || window;
     this.easing = easing;
     this.prevTimestamp = 0;
@@ -71,7 +73,7 @@ class Scroller {
   }
 
   /**
-   * 滚动方法
+   * 滚动到指定位置
    * @param y 目标位置
    * @param callBack 回调方法，返回每次滚动位置
    */
@@ -81,6 +83,36 @@ class Scroller {
     this.prevTimestamp = 0;
     this.target = y;
     this.scrollId = requestAnimationFrame(this.step.bind(this));
+  }
+
+  private linearStep(timestamp: number) {
+    if (!this.prevTimestamp) this.prevTimestamp = timestamp; 
+    const currentTime = timestamp - this.prevTimestamp;
+    const value = this.source + currentTime * this.speed;
+    if (this.scrollCb) this.scrollCb(value);
+    if (this.element === window) {
+      window.scrollTo(0, value);
+    } else {
+      (this.element as HTMLElement).scrollTop = value;
+    }
+    this.scrollId = requestAnimationFrame(this.linearStep.bind(this));
+  }
+
+  /**
+   * 开始滚动
+   * @param speed 滚动速度 px/s 默认50
+   * @param callBack 回调方法，返回每次滚动位置
+   */
+  start(speed?: number, callBack?: (y: number) => void) {
+    this.scrollCb = callBack;
+    if (speed) this.speed = speed / 1000; // 将速度转为 px/ms
+    this.source = this.element === window ? window.scrollY : (this.element as Element).scrollTop;
+    this.prevTimestamp = 0;
+    this.scrollId = requestAnimationFrame(this.linearStep.bind(this));
+  }
+
+  stop() {
+    window.cancelAnimationFrame(this.scrollId);
   }
 }
 
