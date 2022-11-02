@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-10-18 17:30:58
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-11-02 18:10:35
+ * @LastEditTime: 2022-11-02 18:37:22
  * @FilePath: \scroller.js\rollup.config.ts
  */
 import babel from 'rollup-plugin-babel';
