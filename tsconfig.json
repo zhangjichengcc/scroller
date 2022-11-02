@@ -10,7 +10,7 @@
     "esModuleInterop": true, // 允许export=导出，由import from 导入
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "declaration": true, // 自动生成 .s.ts 声明文件
+    "declaration": true, // 自动生成 .d.ts 声明文件
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "baseUrl": "./",  
@@ -20,6 +20,8 @@
     }
   },
   "include": [
-    "./src"
+    "src/**/*", 
+    "rollup.config.ts",
+    "typings.d.ts"
   ]
 }

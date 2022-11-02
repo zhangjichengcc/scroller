@@ -1,18 +1,19 @@
 {
   "name": "@zhangjicheng/scroller",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A scrolling plug-in",
   "author": "zhangjicheng",
   "license": "ISC",
   "main": "lib/main.cjs.js",
   "module": "lib/main.esm.js",
+  "umd:main": "lib/main.umd.js",
   "jsnext:main": "lib/main.esm.js",
-  "typings": "lib/main.d.ts",
+  "typings": "lib/src/main.d.ts",
   "private": false,
   "access": "public",
   "scripts": {
-    "start": "rollup -c",
-    "build": "set TERSER=1 && rollup -c",
+    "start": "rollup -c rollup.config.ts --configPlugin typescript",
+    "build": "cross-env ENV=development TERSER=1 rollup -c rollup.config.ts --configPlugin typescript",
     "publish": "npm publish --access public"
   },
   "keywords": [
@@ -39,17 +40,17 @@
     "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.18.6",
     "@rollup/plugin-commonjs": "^23.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@types/node": "^18.11.2",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
+    "cross-env": "^7.0.3",
     "eslint": "^8.19.0",
     "rollup": "2.78.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-filesize": "^9.1.2",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.32.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   }
 }

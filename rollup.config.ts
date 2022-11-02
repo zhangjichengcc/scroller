@@ -2,25 +2,22 @@
  * @Author: zhangjicheng
  * @Date: 2022-10-18 17:30:58
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-10-19 18:06:10
+ * @LastEditTime: 2022-11-02 18:10:35
  * @FilePath: \scroller.js\rollup.config.ts
  */
 import babel from 'rollup-plugin-babel';
-import { nodeResolve } from '@rollup/plugin-node-resolve'; // 帮助rollup查找外部模块
 import commonjs from '@rollup/plugin-commonjs'; // 将commonjs转es6模块
 import filesize from 'rollup-plugin-filesize'; // 显示打包后包大小
 import { terser } from 'rollup-plugin-terser';  // 压缩代码
 import { eslint } from 'rollup-plugin-eslint';
-import ts from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
+import { RollupOptions } from 'rollup';
 import packageJSON from './package.json';
 
-const { TERSER } = process.env;
+const { TERSER, ENV } = process.env;
 
-const plugins = [
-  nodeResolve({
-    // exportConditions: ['node']
-    // dedupe: ['tween-functions', '@types/tween-functions'],
-  }),
+const plugins: RollupOptions['plugins'] = [
+  typescript(),
   commonjs({
     include: ['node_modules/**']
   }),
@@ -28,30 +25,41 @@ const plugins = [
     exclude: 'node_modules/**' // 只编译我们的源代码
   }),
   filesize(),
-  TERSER ? terser() : '',
+  TERSER ? terser() : null,
   eslint({
     throwOnError: true,
     include: ['src/**/*.ts'],
     exclude: ['node_modules/**', 'lib/**']
   }),
-  ts(),
 ]
 
 
 export default {
   input: 'src/main.ts',
+  // external: file => {
+  //   return /rollup.config.ts/.test(file)
+  // },
   output: [
     {
       file: packageJSON.main,
       format: "cjs",
       exports: "auto",
+      sourcemap: ENV !== 'development',
     },
     {
       file: packageJSON.module,
       format: "esm",
       exports: "auto",
+      sourcemap: ENV !== 'development',
+    },
+    {
+      file: packageJSON['umd:main'],
+      format: "umd",
+      exports: "auto",
+      name: "Scroller",
+      sourcemap: ENV !== 'development',
     },
   ],
   plugins,
-  external: ['tween-functions']
-};
+  // external: ['tween-functions']
+} as RollupOptions;

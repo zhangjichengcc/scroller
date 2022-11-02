@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-10-18 17:17:12
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-10-28 20:28:33
+ * @LastEditTime: 2022-11-02 17:58:27
  * @FilePath: \scroller.js\src\main.ts
  */
 import tweenFunctions from '@/utils/tweenFunctions';
@@ -111,6 +111,9 @@ type Option = {
     this.scrollId = requestAnimationFrame(this.linearStep.bind(this));
   }
 
+  /**
+   * 停止滚动
+   */
   stop() {
     window.cancelAnimationFrame(this.scrollId);
   }
